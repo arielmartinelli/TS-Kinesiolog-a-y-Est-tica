@@ -1,0 +1,40 @@
+<svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .pat-line { stroke: #6f583c; stroke-width: 0.9; stroke-linecap: round; stroke-linejoin: round; fill: none; opacity: 0.075; }
+      .pat-fill { fill: #6f583c; opacity: 0.035; }
+      .pat-dot { fill: #897052; opacity: 0.08; }
+    </style>
+  </defs>
+
+  <!-- Organic Botanical Leaf Motif 1 -->
+  <path class="pat-line" d="M 30 150 C 15 120 20 85 55 60 C 90 85 95 120 80 150 C 65 160 45 160 30 150 Z" />
+  <path class="pat-line" d="M 55 60 Q 55 105 55 155" />
+  <path class="pat-line" d="M 55 90 Q 42 100 35 115" />
+  <path class="pat-line" d="M 55 105 Q 68 115 75 130" />
+  <path class="pat-line" d="M 55 120 Q 45 130 40 142" />
+
+  <!-- Botanical Leaf Motif 2 (Mirrored / Offset) -->
+  <path class="pat-line" d="M 120 60 C 105 30 110 -5 145 -30 C 180 -5 185 30 170 60 C 155 70 135 70 120 60 Z" />
+  <path class="pat-line" d="M 145 -30 Q 145 15 145 65" />
+
+  <!-- Flowing Kinetic / Fascia Wave (Kinesiología Movement) -->
+  <path class="pat-line" d="M 0 45 C 45 25 75 65 120 45 C 150 30 165 45 180 35" />
+  <path class="pat-line" d="M 0 135 C 45 115 75 155 120 135 C 150 120 165 135 180 125" />
+
+  <!-- Stylized Lotus / Spa Petal Accent -->
+  <path class="pat-line" d="M 140 130 C 125 115 128 95 140 85 C 152 95 155 115 140 130 Z" />
+  <path class="pat-fill" d="M 140 130 C 125 115 128 95 140 85 C 152 95 155 115 140 130 Z" />
+  <path class="pat-line" d="M 118 122 C 112 108 122 98 135 96" />
+  <path class="pat-line" d="M 162 122 C 168 108 158 98 145 96" />
+
+  <!-- Discreet Wellness Rings / Micro-accents -->
+  <circle class="pat-line" cx="90" cy="15" r="8" />
+  <circle class="pat-dot" cx="90" cy="15" r="3" />
+
+  <circle class="pat-line" cx="5" cy="95" r="6" />
+  <circle class="pat-dot" cx="5" cy="95" r="2" />
+
+  <circle class="pat-line" cx="175" cy="95" r="6" />
+  <circle class="pat-dot" cx="175" cy="95" r="2" />
+</svg>

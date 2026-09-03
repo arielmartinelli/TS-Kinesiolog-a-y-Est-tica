@@ -180,13 +180,26 @@ export default function App() {
   };
 
   return (
-    <div className="bg-[#fcf9f4] text-[#1c1c19] min-h-screen font-body flex flex-col selection:bg-[#6f583c] selection:text-white pb-20 md:pb-0">
+    <div 
+      className="text-[#1c1c19] min-h-screen font-body flex flex-col selection:bg-[#6f583c] selection:text-white pb-20 md:pb-0 relative"
+      style={{
+        backgroundColor: '#faf7f2',
+        backgroundImage: `
+          radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.9) 0%, transparent 45%),
+          radial-gradient(circle at 90% 60%, rgba(238, 230, 219, 0.7) 0%, transparent 50%),
+          url('/assets/bg-pattern.svg')
+        `,
+        backgroundRepeat: 'repeat',
+        backgroundSize: 'auto, auto, 180px 180px',
+        backgroundAttachment: 'fixed'
+      }}
+    >
       
       {/* TopAppBar (Full width desktop navbar, NO phone pill as requested) */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fcf9f4]/90 backdrop-blur-xl border-b border-[#e5e2dd]/70 transition-all">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#faf7f2]/90 backdrop-blur-xl border-b border-[#e5e2dd]/70 transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex justify-between items-center">
           
-          {/* Brand Logo Only (TS Monogram) + Clean Separator */}
+          {/* Brand Logo Only (TS Monogram HD Transparent) + Clean Separator */}
           <div className="flex items-center">
             <a 
               href="#home" 
@@ -195,9 +208,9 @@ export default function App() {
               aria-label="TS Kinesiología y Estética"
             >
               <img
-                src="/assets/ts-monogram.png"
+                src="/assets/ts-monogram-hd.png"
                 alt="TS Logo"
-                className="h-10 md:h-14 w-auto object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
+                className="h-10 md:h-14 w-auto object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-sm"
               />
             </a>
 
@@ -730,9 +743,9 @@ export default function App() {
               <div className="md:col-span-2 space-y-3">
                 <div className="flex items-center gap-3">
                   <img
-                    src="/assets/ts-monogram.png"
+                    src="/assets/ts-monogram-hd.png"
                     alt="TS Monograma"
-                    className="h-12 w-auto object-contain mix-blend-multiply"
+                    className="h-12 w-auto object-contain drop-shadow-sm"
                   />
                   <div>
                     <h3 className="font-sans font-bold text-lg text-[#6f583c] leading-tight">
