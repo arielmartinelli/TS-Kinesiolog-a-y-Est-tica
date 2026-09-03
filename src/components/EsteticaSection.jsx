@@ -20,7 +20,7 @@ export default function EsteticaSection() {
       id: "masajes",
       tag: "Cuerpo & Mente",
       title: "Masajes Relajantes y Descontracturantes",
-      headline: "Regalate un momento para vos 🥰",
+      headline: "Regalate un momento para vos",
       desc: "Técnicas manuales profundas para desarmar nudos y contracturas en cuello, hombros y espalda, combinadas con maniobras relajantes que reducen el estrés y renuevan tu energía vital.",
       benefits: [
         "Alivio inmediato de tensiones musculares",

@@ -183,7 +183,7 @@ export default function App() {
     masajes: {
       title: "Masajes Terapéuticos & Relax",
       badge: "Agenda Abierta",
-      subtitle: "Regálate un momento para vos 🥰",
+      subtitle: "Regálate un momento para vos",
       therapist: "Lic. Tatiana Samana",
       location: "Nueva Córdoba",
       contact: "2804831115 | Pedí tu turno por WhatsApp o MD",
@@ -532,7 +532,7 @@ export default function App() {
                       loading="lazy"
                     />
                     <div className="absolute top-3 left-3 bg-[#6f583c]/90 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-semibold shadow-sm">
-                      Regálate un momento 🥰
+                      Regálate un momento
                     </div>
                   </div>
 
