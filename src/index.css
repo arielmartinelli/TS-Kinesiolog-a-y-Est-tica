@@ -88,3 +88,34 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Fluid navbar link hover effect: color change + center-outwards expanding underline */
+.nav-link-animated {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.25rem;
+  padding-bottom: 0.35rem;
+  color: #4e453c;
+  transition: color 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link-animated::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background-color: #6f583c;
+  border-radius: 9999px;
+  transform: translateX(-50%);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link-animated:hover {
+  color: #6f583c;
+}
+
+.nav-link-animated:hover::after {
+  width: 100%;
+}

@@ -264,13 +264,13 @@ export default function App() {
 
           {/* Desktop Navigation Links (Separated from Logo) */}
           <nav className="hidden md:flex items-center gap-7 text-sm font-semibold text-[#4e453c]">
-            <a href="#home" onClick={(e) => scrollToSection(e, 'home')} className="hover:text-[#6f583c] transition-colors py-1">Inicio</a>
-            <a href="#servicios" onClick={(e) => scrollToSection(e, 'servicios')} className="hover:text-[#6f583c] transition-colors py-1">Servicios</a>
-            <a href="#servicios" onClick={(e) => scrollToSection(e, 'servicios', 'kinesiologia')} className="hover:text-[#6f583c] transition-colors py-1">Kinesiología</a>
-            <a href="#servicios" onClick={(e) => scrollToSection(e, 'servicios', 'estetica')} className="hover:text-[#6f583c] transition-colors py-1">Estética</a>
-            <a href="#servicios" onClick={(e) => scrollToSection(e, 'servicios', 'masajes')} className="hover:text-[#6f583c] transition-colors py-1">Masajes</a>
-            <a href="#testimonios" onClick={(e) => scrollToSection(e, 'testimonios')} className="hover:text-[#6f583c] transition-colors py-1">Testimonios</a>
-            <a href="#contacto" onClick={(e) => scrollToSection(e, 'contacto')} className="hover:text-[#6f583c] transition-colors py-1">Ubicación</a>
+            <a href="#home" onClick={(e) => scrollToSection(e, 'home')} className="nav-link-animated">Inicio</a>
+            <a href="#servicios" onClick={(e) => scrollToSection(e, 'servicios')} className="nav-link-animated">Servicios</a>
+            <a href="#servicios" onClick={(e) => scrollToSection(e, 'servicios', 'kinesiologia')} className="nav-link-animated">Kinesiología</a>
+            <a href="#servicios" onClick={(e) => scrollToSection(e, 'servicios', 'estetica')} className="nav-link-animated">Estética</a>
+            <a href="#servicios" onClick={(e) => scrollToSection(e, 'servicios', 'masajes')} className="nav-link-animated">Masajes</a>
+            <a href="#testimonios" onClick={(e) => scrollToSection(e, 'testimonios')} className="nav-link-animated">Testimonios</a>
+            <a href="#contacto" onClick={(e) => scrollToSection(e, 'contacto')} className="nav-link-animated">Ubicación</a>
           </nav>
 
           {/* Contact Button (Phone pill removed) */}
