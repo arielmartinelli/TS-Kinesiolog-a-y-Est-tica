@@ -198,8 +198,8 @@ export default function App() {
     }
   };
 
-  // Smooth scroll with precise header offset, and opens info modal on PC if specified
-  const scrollToSection = (e, id, openModalOnDesktop = false) => {
+  // Smooth scroll with precise header offset, and opens info modal on PC at exact section height
+  const scrollToSection = (e, id, modalType = null) => {
     if (e && e.preventDefault) e.preventDefault();
     setActiveTab(id);
     const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 768;
@@ -215,12 +215,10 @@ export default function App() {
       });
     }
 
-    // Only in PC/Desktop: automatically open the info modal box for that service
-    if (openModalOnDesktop && isDesktop) {
+    // Only in PC/Desktop: open the service info modal box right there at servicios level
+    if (modalType && isDesktop) {
       setTimeout(() => {
-        if (id === 'kinesio') setInfoModal('kinesiologia');
-        else if (id === 'estetica') setInfoModal('estetica');
-        else if (id === 'masajes') setInfoModal('masajes');
+        setInfoModal(modalType);
       }, 350);
     }
   };
@@ -268,11 +266,11 @@ export default function App() {
           <nav className="hidden md:flex items-center gap-7 text-sm font-semibold text-[#4e453c]">
             <a href="#home" onClick={(e) => scrollToSection(e, 'home')} className="hover:text-[#6f583c] transition-colors py-1">Inicio</a>
             <a href="#servicios" onClick={(e) => scrollToSection(e, 'servicios')} className="hover:text-[#6f583c] transition-colors py-1">Servicios</a>
-            <a href="#kinesio" onClick={(e) => scrollToSection(e, 'kinesio', true)} className="hover:text-[#6f583c] transition-colors py-1">Kinesiología</a>
-            <a href="#estetica" onClick={(e) => scrollToSection(e, 'estetica', true)} className="hover:text-[#6f583c] transition-colors py-1">Estética</a>
-            <a href="#masajes" onClick={(e) => scrollToSection(e, 'masajes', true)} className="hover:text-[#6f583c] transition-colors py-1">Masajes</a>
+            <a href="#servicios" onClick={(e) => scrollToSection(e, 'servicios', 'kinesiologia')} className="hover:text-[#6f583c] transition-colors py-1">Kinesiología</a>
+            <a href="#servicios" onClick={(e) => scrollToSection(e, 'servicios', 'estetica')} className="hover:text-[#6f583c] transition-colors py-1">Estética</a>
+            <a href="#servicios" onClick={(e) => scrollToSection(e, 'servicios', 'masajes')} className="hover:text-[#6f583c] transition-colors py-1">Masajes</a>
             <a href="#testimonios" onClick={(e) => scrollToSection(e, 'testimonios')} className="hover:text-[#6f583c] transition-colors py-1">Testimonios</a>
-            <a href="#contacto" onClick={(e) => scrollToSection(e, 'contacto')} className="hover:text-[#6f583c] transition-colors py-1">Encontranos</a>
+            <a href="#contacto" onClick={(e) => scrollToSection(e, 'contacto')} className="hover:text-[#6f583c] transition-colors py-1">Ubicación</a>
           </nav>
 
           {/* Contact Button (Phone pill removed) */}
@@ -300,15 +298,15 @@ export default function App() {
           {/* Pill Tag, Headline & Subhead with scroll reveal */}
           <RevealOnScroll className="flex flex-col items-center">
             <div className="bg-[#897052]/10 text-[#6f583c] px-5 py-1.5 rounded-full font-sans text-xs md:text-sm font-semibold uppercase tracking-wider mb-2">
-              Clínica Especializada
+              Atención Profesional 1 a 1
             </div>
 
             <h1 className="font-sans font-bold text-3xl sm:text-5xl md:text-6xl text-[#1c1c19] leading-[1.15] tracking-tight max-w-3xl mt-3">
-              Recupera tu Bienestar con Profesionales
+              Recupera tu Bienestar con Atención Personalizada
             </h1>
 
             <p className="font-body text-[#4e453c] text-sm sm:text-lg md:text-xl max-w-2xl leading-relaxed mt-4">
-              Kinesiología integral y Estética de avanzada en un solo lugar. Atención kinésica a domicilio en Nueva Córdoba y tratamientos personalizados en gabinete.
+              Kinesiología integral, estética facial y masajes terapéuticos a cargo de la Lic. Tatiana Samana. Brindo atención kinésica a domicilio en Nueva Córdoba y tratamientos individuales en gabinete.
             </p>
           </RevealOnScroll>
 
@@ -350,7 +348,7 @@ export default function App() {
                   <span>+</span>
                   <Counter end={500} duration={2200} />
                 </p>
-                <p className="text-xs text-[#6b645c] font-medium mt-1">Pacientes</p>
+                <p className="text-xs text-[#6b645c] font-medium mt-1">Pacientes Atendidos</p>
               </div>
 
               <div className="flex flex-col items-center">
@@ -371,10 +369,10 @@ export default function App() {
           <RevealOnScroll>
             <div className="text-center max-w-2xl mx-auto mb-10 md:mb-16">
               <h2 className="font-sans font-bold text-2xl sm:text-3xl md:text-4xl text-[#1c1c19]">
-                Nuestros Servicios
+                Servicios & Tratamientos
               </h2>
               <p className="text-[#4e453c] text-sm sm:text-base font-medium mt-1">
-                Tratamientos profesionales de alta efectividad
+                Atención personalizada e integral para tu salud, recuperación y bienestar
               </p>
             </div>
           </RevealOnScroll>
@@ -412,7 +410,7 @@ export default function App() {
                     </div>
 
                     <p className="text-[#4e453c] text-sm leading-relaxed">
-                      Rehabilitación física integral y terapia manual enfocada en tu pronta recuperación. Traumatología, pre y postoperatorios y atención personalizada a domicilio en Nueva Córdoba.
+                      Rehabilitación física y terapia manual enfocada en tu pronta recuperación. Atiendo traumatología, pre y postoperatorios de manera personalizada en tu domicilio en Nueva Córdoba.
                     </p>
 
                     <div className="flex gap-2 mt-2 flex-wrap">
@@ -482,7 +480,7 @@ export default function App() {
                     </div>
 
                     <p className="text-[#4e453c] text-sm leading-relaxed">
-                      Tratamientos faciales profesionales para resaltar tu belleza natural con 10% OFF activo. Depilación definitiva láser con sesiones periódicas (fechas a confirmar).
+                      Tratamientos faciales personalizados para resaltar tu belleza natural con 10% OFF activo. Sesiones de depilación definitiva láser con atención individual (fechas a confirmar).
                     </p>
 
                     <div className="flex gap-2 mt-2 flex-wrap">
@@ -552,7 +550,7 @@ export default function App() {
                     </div>
 
                     <p className="text-[#4e453c] text-sm leading-relaxed">
-                      Sesiones de relajación y masajes descontracturantes diseñadas para aliviar contracturas, dolores cervicales y renovar tu energía corporal. Agenda abierta esta semana.
+                      Sesiones de relajación y masajes descontracturantes para aliviar contracturas y dolores cervicales. Brindo atención individual y dedicada para renovar tu energía corporal.
                     </p>
 
                     <div className="flex gap-2 mt-2 flex-wrap">
@@ -603,10 +601,10 @@ export default function App() {
                   Experiencias de Pacientes
                 </div>
                 <h2 className="font-sans font-bold text-2xl sm:text-3xl md:text-4xl text-[#1c1c19]">
-                  Lo que dicen nuestros pacientes
+                  Lo que dicen mis pacientes
                 </h2>
                 <p className="text-[#4e453c] text-sm sm:text-base font-medium mt-1">
-                  Opiniones y recuperaciones reales
+                  Experiencias y recuperaciones reales de quienes confían en mi atención
                 </p>
               </div>
             </RevealOnScroll>
@@ -727,10 +725,10 @@ export default function App() {
           <RevealOnScroll>
             <div className="text-center max-w-2xl mx-auto mb-12">
               <h2 className="font-sans font-bold text-2xl sm:text-3xl md:text-4xl text-[#1c1c19]">
-                Encontranos
+                Ubicación & Atención
               </h2>
               <p className="text-[#4e453c] text-sm sm:text-base font-medium mt-1">
-                Atención presencial en Nueva Córdoba y visitas a domicilio
+                Atención personalizada en gabinete en Nueva Córdoba y visitas a domicilio
               </p>
             </div>
           </RevealOnScroll>
@@ -769,7 +767,7 @@ export default function App() {
                     Nueva Córdoba y alrededores
                   </h3>
                   <p className="text-sm text-[#4e453c] leading-relaxed">
-                    Atención kinésica a domicilio equipada con camilla e instrumental, y sesiones de estética/masajes en consultorio acondicionado con turnos coordinados.
+                    Me traslado con camilla y equipamiento a tu domicilio para tu sesión kinésica, y también brindo tratamientos de estética y masajes en gabinete acondicionado en Nueva Córdoba.
                   </p>
                 </div>
 
@@ -786,7 +784,7 @@ export default function App() {
                   </div>
                   <div className="flex items-center gap-3">
                     <span className="material-symbols-outlined text-[#6f583c]">home</span>
-                    <span>Atención en tu domicilio sin traslados ni esperas</span>
+                    <span>Atención personalizada en tu domicilio sin esperas ni traslados</span>
                   </div>
                 </div>
 
@@ -827,7 +825,7 @@ export default function App() {
                     </div>
                   </div>
                   <p className="text-xs sm:text-sm text-[#4e453c] max-w-sm leading-relaxed">
-                    Lic. Tatiana Samana. Traumatología, rehabilitación a domicilio, masajes terapéuticos, estética dérmica y depilación definitiva.
+                    Lic. Tatiana Samana. Kinesiología, rehabilitación a domicilio, estética dérmica y masajes terapéuticos personalizados.
                   </p>
                 </div>
 
@@ -839,6 +837,7 @@ export default function App() {
                     <a href="#kinesio" className="hover:text-[#6f583c] transition-colors">Kinesiología</a>
                     <a href="#estetica" className="hover:text-[#6f583c] transition-colors">Estética & Masajes</a>
                     <a href="#testimonios" className="hover:text-[#6f583c] transition-colors">Testimonios</a>
+                    <a href="#contacto" className="hover:text-[#6f583c] transition-colors">Ubicación</a>
                   </div>
                 </div>
 
