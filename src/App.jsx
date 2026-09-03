@@ -7,6 +7,40 @@ import {
   INSTAGRAM_HANDLE 
 } from './utils/whatsapp';
 
+// Progressive count-up animation component
+function Counter({ end, duration = 2000, decimals = 0, prefix = "", suffix = "" }) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let startTime = null;
+    let animationFrame;
+
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      // easeOutCubic curve for smooth finish
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      const current = easeOut * end;
+      setCount(current);
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [end, duration]);
+
+  return (
+    <span>
+      {prefix}
+      {decimals > 0 ? count.toFixed(decimals) : Math.floor(count)}
+      {suffix}
+    </span>
+  );
+}
+
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [infoModal, setInfoModal] = useState(null);
@@ -239,19 +273,32 @@ export default function App() {
             </a>
           </div>
 
-          {/* Desktop stats */}
-          <div className="hidden sm:grid grid-cols-3 gap-6 md:gap-12 mt-12 pt-8 border-t border-[#e5e2dd]/60 max-w-2xl w-full text-center">
-            <div>
-              <p className="font-sans font-bold text-2xl text-[#6f583c]">A Domicilio</p>
-              <p className="text-xs text-[#6b645c] mt-0.5">Nueva Córdoba & Zonas</p>
+          {/* Stats with progressive count animation */}
+          <div className="grid grid-cols-3 gap-3 sm:gap-8 md:gap-12 mt-12 pt-8 border-t border-[#e5e2dd]/60 max-w-2xl w-full text-center">
+            <div className="flex flex-col items-center">
+              <p className="font-sans font-bold text-2xl sm:text-3xl text-[#6f583c] tracking-tight flex items-center justify-center">
+                <Counter end={2} duration={1800} />
+                <span className="ml-1">Años</span>
+              </p>
+              <p className="text-xs text-[#6b645c] font-medium mt-1">De Experiencia</p>
             </div>
-            <div>
-              <p className="font-sans font-bold text-2xl text-[#6f583c]">1 a 1</p>
-              <p className="text-xs text-[#6b645c] mt-0.5">Atención Personalizada</p>
+
+            <div className="flex flex-col items-center">
+              <p className="font-sans font-bold text-2xl sm:text-3xl text-[#6f583c] tracking-tight flex items-center justify-center">
+                <span>+</span>
+                <Counter end={500} duration={2200} />
+              </p>
+              <p className="text-xs text-[#6b645c] font-medium mt-1">Pacientes</p>
             </div>
-            <div>
-              <p className="font-sans font-bold text-2xl text-[#6f583c]">Directo</p>
-              <p className="text-xs text-[#6b645c] mt-0.5">Sin tiempos de espera</p>
+
+            <div className="flex flex-col items-center">
+              <p className="font-sans font-bold text-2xl sm:text-3xl text-[#6f583c] tracking-tight flex items-center justify-center gap-1">
+                <span className="material-symbols-outlined text-xl sm:text-2xl text-[#6f583c]" style={{ fontVariationSettings: "'FILL' 1" }}>
+                  star
+                </span>
+                <Counter end={4.9} duration={2000} decimals={1} />
+              </p>
+              <p className="text-xs text-[#6b645c] font-medium mt-1">4.9 Estrellas</p>
             </div>
           </div>
         </section>
