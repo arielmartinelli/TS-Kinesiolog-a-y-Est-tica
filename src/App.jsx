@@ -118,19 +118,30 @@ export default function App() {
     }
   };
 
-  // Smooth scroll with precise header offset to avoid misalignment
-  const scrollToSection = (e, id) => {
+  // Smooth scroll with precise header offset, and opens info modal on PC if specified
+  const scrollToSection = (e, id, openModalOnDesktop = false) => {
     if (e && e.preventDefault) e.preventDefault();
     setActiveTab(id);
+    const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 768;
+
     const element = document.getElementById(id);
     if (element) {
-      const headerOffset = window.innerWidth >= 768 ? 95 : 75;
+      const headerOffset = isDesktop ? 95 : 75;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
       });
+    }
+
+    // Only in PC/Desktop: automatically open the info modal box for that service
+    if (openModalOnDesktop && isDesktop) {
+      setTimeout(() => {
+        if (id === 'kinesio') setInfoModal('kinesiologia');
+        else if (id === 'estetica') setInfoModal('estetica');
+        else if (id === 'masajes') setInfoModal('masajes');
+      }, 350);
     }
   };
 
@@ -164,9 +175,9 @@ export default function App() {
           <nav className="hidden md:flex items-center gap-7 text-sm font-semibold text-[#4e453c]">
             <a href="#home" onClick={(e) => scrollToSection(e, 'home')} className="hover:text-[#6f583c] transition-colors py-1">Inicio</a>
             <a href="#servicios" onClick={(e) => scrollToSection(e, 'servicios')} className="hover:text-[#6f583c] transition-colors py-1">Servicios</a>
-            <a href="#kinesio" onClick={(e) => scrollToSection(e, 'kinesio')} className="hover:text-[#6f583c] transition-colors py-1">Kinesiología</a>
-            <a href="#estetica" onClick={(e) => scrollToSection(e, 'estetica')} className="hover:text-[#6f583c] transition-colors py-1">Estética</a>
-            <a href="#masajes" onClick={(e) => scrollToSection(e, 'masajes')} className="hover:text-[#6f583c] transition-colors py-1">Masajes</a>
+            <a href="#kinesio" onClick={(e) => scrollToSection(e, 'kinesio', true)} className="hover:text-[#6f583c] transition-colors py-1">Kinesiología</a>
+            <a href="#estetica" onClick={(e) => scrollToSection(e, 'estetica', true)} className="hover:text-[#6f583c] transition-colors py-1">Estética</a>
+            <a href="#masajes" onClick={(e) => scrollToSection(e, 'masajes', true)} className="hover:text-[#6f583c] transition-colors py-1">Masajes</a>
             <a href="#testimonios" onClick={(e) => scrollToSection(e, 'testimonios')} className="hover:text-[#6f583c] transition-colors py-1">Testimonios</a>
             <a href="#contacto" onClick={(e) => scrollToSection(e, 'contacto')} className="hover:text-[#6f583c] transition-colors py-1">Encontranos</a>
           </nav>
