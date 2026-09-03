@@ -1,9 +1,9 @@
 <svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
-      .pat-line { stroke: #6f583c; stroke-width: 0.9; stroke-linecap: round; stroke-linejoin: round; fill: none; opacity: 0.075; }
-      .pat-fill { fill: #6f583c; opacity: 0.035; }
-      .pat-dot { fill: #897052; opacity: 0.08; }
+      .pat-line { stroke: #523c21; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; fill: none; opacity: 0.20; }
+      .pat-fill { fill: #523c21; opacity: 0.09; }
+      .pat-dot { fill: #523c21; opacity: 0.24; }
     </style>
   </defs>
 

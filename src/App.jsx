@@ -227,14 +227,14 @@ export default function App() {
     <div 
       className="text-[#1c1c19] min-h-screen font-body flex flex-col selection:bg-[#6f583c] selection:text-white pb-20 md:pb-0 relative"
       style={{
-        backgroundColor: '#faf7f2',
+        backgroundColor: '#f5f0e8',
         backgroundImage: `
-          radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.9) 0%, transparent 45%),
-          radial-gradient(circle at 90% 60%, rgba(238, 230, 219, 0.7) 0%, transparent 50%),
+          radial-gradient(circle at 12% 15%, rgba(255, 255, 255, 0.25) 0%, transparent 50%),
+          radial-gradient(circle at 88% 65%, rgba(224, 212, 196, 0.4) 0%, transparent 55%),
           url('/assets/bg-pattern.svg')
         `,
-        backgroundRepeat: 'repeat',
-        backgroundSize: 'auto, auto, 180px 180px',
+        backgroundRepeat: 'no-repeat, no-repeat, repeat',
+        backgroundSize: '100% 100%, 100% 100%, 180px 180px',
         backgroundAttachment: 'fixed'
       }}
     >
